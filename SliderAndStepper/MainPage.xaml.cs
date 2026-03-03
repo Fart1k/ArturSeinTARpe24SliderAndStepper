@@ -2,23 +2,53 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        VerticalStackLayout vst;
+        ScrollView sv;
+        public List<ContentPage> Lehed = new List<ContentPage>()
+        {
+            new DateTimePage(),
+            new StepperSliderPage()
+        };
+        public List<string> LeheNimed = new List<string>()
+    {
+        "DateTime",
+        "StepperSlider"
+    };
 
         public MainPage()
         {
-            InitializeComponent();
-        }
+            vst = new VerticalStackLayout
+            {
+                Padding = 20,
+                Spacing = 15
+            };
 
-        private void OnCounterClicked(object? sender, EventArgs e)
-        {
-            count++;
+            for (int i = 0; i < Lehed.Count; i++)
+            {
+                Button nupp = new Button
+                {
+                    Text = LeheNimed[i],
+                    FontSize = 36,
+                    FontFamily = "Socafe",
+                    BackgroundColor = Colors.LightGray,
+                    TextColor = Colors.Black,
+                    CornerRadius = 10,
+                    HeightRequest = 60,
+                    ZIndex = i
+                };
+                vst.Add(nupp);
+                nupp.Clicked += (sender, e) =>
+                {
+                    var valik = Lehed[nupp.ZIndex];
+                    Navigation.PushAsync(valik);
+                };
+                sv = new ScrollView
+                {
+                    Content = vst
+                };
+                Content = sv;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            }
         }
     }
 }
