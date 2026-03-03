@@ -7,12 +7,14 @@
         public List<ContentPage> Lehed = new List<ContentPage>()
         {
             new DateTimePage(),
-            new StepperSliderPage()
+            new StepperSliderPage(),
+            new RGBSliderStepper()
         };
         public List<string> LeheNimed = new List<string>()
     {
         "DateTime",
-        "StepperSlider"
+        "StepperSlider",
+        "RGB SliderStepper"
     };
 
         public MainPage()
