@@ -14,6 +14,7 @@ public partial class SnowManPage : ContentPage
     Ellipse bodyOne;
 	Ellipse bodyTwo;
 
+	Picker picker;
 	AbsoluteLayout al;
 	public SnowManPage()
 	{
@@ -49,10 +50,23 @@ public partial class SnowManPage : ContentPage
             StrokeThickness = 2,
         };
 
+		var tegevusteList = new List<string>()
+		{
+			"Peida lumememm",
+			"Näita lumememm",
+			"Muuda värvi",
+			"Sulata",
+			"Tantsi"
+		};
+		picker = new Picker
+		{
+			Title = "Vali tegevus: ",
+			ItemsSource = tegevusteList
+		};
 		al = new AbsoluteLayout
 		{
 			HeightRequest = 400,
-			Children = { hat, head, bodyOne, bodyTwo }
+			Children = { hat, head, bodyOne, bodyTwo, picker }
 		};
 
         AbsoluteLayout.SetLayoutFlags(bodyTwo, AbsoluteLayoutFlags.PositionProportional);
@@ -67,7 +81,9 @@ public partial class SnowManPage : ContentPage
         AbsoluteLayout.SetLayoutFlags(hat, AbsoluteLayoutFlags.PositionProportional);
         AbsoluteLayout.SetLayoutBounds(hat, new Rect(0.5, 0.15, 50, 40));
 
-        Content = al;
+        
 
+        Content = al;
+               
     }
 }
