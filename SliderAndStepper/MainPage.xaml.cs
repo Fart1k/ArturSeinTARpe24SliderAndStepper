@@ -8,13 +8,15 @@
         {
             new DateTimePage(),
             new StepperSliderPage(),
-            new RGBSliderStepper()
+            new RGBSliderStepper(),
+            new SnowManPage()
         };
         public List<string> LeheNimed = new List<string>()
     {
         "DateTime",
         "StepperSlider",
-        "RGB SliderStepper"
+        "RGB SliderStepper",
+        "Lumememm"
     };
 
         public MainPage()
