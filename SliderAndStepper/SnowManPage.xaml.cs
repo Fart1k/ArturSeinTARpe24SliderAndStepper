@@ -2,20 +2,27 @@
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 using Microsoft.Maui.Layouts;
+using System.Threading.Tasks;
 
 namespace SliderAndStepper;
 
 public partial class SnowManPage : ContentPage
 {
-	// Snowman
+	Random rnd = new Random();
+	uint kiirus;
 
-	Frame hat;
+    // Snowman
+
+    Frame hat;
     Ellipse head;
     Ellipse bodyOne;
 	Ellipse bodyTwo;
 
-	Slider = 
+	Label opacityLabel;
+	Slider opacitySlider;
 
+	Label speedLabel;
+	Stepper speedStepper;
 
 	Picker picker;
 	
@@ -54,11 +61,53 @@ public partial class SnowManPage : ContentPage
             StrokeThickness = 2,
         };
 
+		// Opacity
+		opacityLabel = new Label
+		{
+			Text = "Muuda lumememme l‰bipaistvust",
+			HorizontalOptions = LayoutOptions.Center,
+			FontSize = 20
+		};
+
+		opacitySlider = new Slider
+		{
+			Minimum = 0.0,
+			Maximum = 1.0,
+			Value = 1.0,
+			HorizontalOptions = LayoutOptions.Center,
+			MinimumTrackColor = Colors.Black,
+			MaximumTrackColor = Colors.Black,
+			ThumbColor = Colors.Gray,
+			WidthRequest = 300
+		};
+
+		opacitySlider.ValueChanged += SliderValueChanged;
+
+		// Speed
+		speedLabel = new Label
+		{
+			Text = "Muuda sulamise kiirust",
+			HorizontalOptions = LayoutOptions.Center,
+			FontSize = 20
+		};
+
+		speedStepper = new Stepper
+		{
+			Minimum = 1000,
+			Maximum = 10000,
+			Increment = 100,
+			Value = 1000,
+			HorizontalOptions = LayoutOptions.Center
+		};
+		speedStepper.ValueChanged += StepperValueChanged;
+
+		// Picker
 		var tegevusteList = new List<string>()
 		{
 			"Peida lumememm",
 			"N‰ita lumememm",
 			"Muuda v‰rvi",
+			"Tagastada v‰rvi",
 			"Sulata",
 			"Tantsi"
 		};
@@ -71,7 +120,7 @@ public partial class SnowManPage : ContentPage
 		al = new AbsoluteLayout
 		{
 			HeightRequest = 400,
-			Children = { hat, head, bodyOne, bodyTwo, picker }
+			Children = { hat, head, bodyOne, bodyTwo, speedLabel, speedStepper, opacityLabel, opacitySlider, picker }
 		};
 
 		picker.SelectedIndexChanged += PickerSelectedIndexChanged;
@@ -88,8 +137,20 @@ public partial class SnowManPage : ContentPage
         AbsoluteLayout.SetLayoutFlags(hat, AbsoluteLayoutFlags.PositionProportional);
         AbsoluteLayout.SetLayoutBounds(hat, new Rect(0.5, -0.5, 50, 40));
 
+        AbsoluteLayout.SetLayoutFlags(speedLabel, AbsoluteLayoutFlags.PositionProportional);
+        AbsoluteLayout.SetLayoutBounds(speedLabel, new Rect(0.5, 0.47, 300, 40));
+
+        AbsoluteLayout.SetLayoutFlags(speedStepper, AbsoluteLayoutFlags.PositionProportional);
+        AbsoluteLayout.SetLayoutBounds(speedStepper, new Rect(0.5, 0.55, 300, 40));
+
+        AbsoluteLayout.SetLayoutFlags(opacityLabel, AbsoluteLayoutFlags.PositionProportional);
+        AbsoluteLayout.SetLayoutBounds(opacityLabel, new Rect(0.5, 0.7, 400, 40));
+
+        AbsoluteLayout.SetLayoutFlags(opacitySlider, AbsoluteLayoutFlags.PositionProportional);
+        AbsoluteLayout.SetLayoutBounds(opacitySlider, new Rect(0.5, 0.8, 300, 40));
+
         AbsoluteLayout.SetLayoutFlags(picker, AbsoluteLayoutFlags.PositionProportional);
-        AbsoluteLayout.SetLayoutBounds(picker, new Rect(0.5, 1, 50, 40));
+        AbsoluteLayout.SetLayoutBounds(picker, new Rect(0.5, 1, 200, 60));
 
         Content = al;
 
@@ -97,8 +158,149 @@ public partial class SnowManPage : ContentPage
 		
     }
 
-    public void PickerSelectedIndexChanged(object? sender, EventArgs e)
+    public void StepperValueChanged(object? sender, ValueChangedEventArgs e)
     {
-        throw new NotImplementedException();
+		kiirus = (uint)e.NewValue;
+		speedLabel.Text = $"Stepperi v‰‰rtus on: {kiirus} ms";
+    }
+
+    public void SliderValueChanged(object? sender, ValueChangedEventArgs e)
+    {
+		double opacityValue = e.NewValue;
+
+		head.Opacity = opacityValue;
+		bodyOne.Opacity = opacityValue;
+		bodyTwo.Opacity = opacityValue;
+		hat.Opacity = opacityValue;
+
+		opacityLabel.Text = $"Slider v‰‰rtus on: {e.NewValue:F1}";
+    }
+
+    async void PickerSelectedIndexChanged(object? sender, EventArgs e)
+    {
+        int r = rnd.Next(256);
+        int g = rnd.Next(256);
+        int b = rnd.Next(256);
+        int selectedIndex = picker.SelectedIndex;
+
+		// Peida lumememm
+		if (selectedIndex == 0)
+		{
+            head.Opacity = 0;
+            bodyOne.Opacity = 0;
+            bodyTwo.Opacity = 0;
+            hat.Opacity = 0;
+        }
+
+		// N‰ita lumememm
+		else if (selectedIndex == 1)
+		{
+            head.Opacity = 1;
+            bodyOne.Opacity = 1;
+            bodyTwo.Opacity = 1;
+            hat.Opacity = 1;
+
+            head.Scale = 1;
+            bodyOne.Scale = 1;
+            bodyTwo.Scale = 1;
+            hat.Scale = 1;
+        }
+
+		// Muuda v‰rvi
+		else if (selectedIndex == 2)
+		{
+			head.Fill = Color.FromRgb(r, g, b);
+			bodyOne.Fill = Color.FromRgb(r, g, b);
+			bodyTwo.Fill = Color.FromRgb(r, g, b);
+        }
+
+		// Tagastada v‰rvi
+		else if (selectedIndex == 3)
+		{
+			head.Fill = Colors.White;
+			bodyOne.Fill = Colors.White;
+			bodyTwo.Fill = Colors.White;
+        }
+
+		// Sulata
+		else if (selectedIndex == 4)
+		{
+			await SulataLumememm();
+		}
+
+		// Tantsi
+		else if (selectedIndex == 5)
+		{
+			await Tantsi1();
+            await Tantsi2();
+            await Tantsi3();
+            await Tantsi4();
+            await Tantsi5();
+            await Tantsi3();
+        }
+    }
+
+    async Task SulataLumememm()
+    {
+        await Task.WhenAll(
+                    head.ScaleToAsync(0, 1000),
+                    bodyOne.ScaleToAsync(0, 2000),
+                    bodyTwo.ScaleToAsync(0, 3000),
+                    hat.ScaleToAsync(0, 1000),
+                    head.FadeToAsync(0, kiirus),
+                    bodyOne.FadeToAsync(0, kiirus),
+                    bodyTwo.FadeToAsync(0, kiirus),
+                    hat.FadeToAsync(0, kiirus)
+                );
+    }
+
+    private async Task Tantsi5()
+    {
+        await Task.WhenAll(
+                hat.TranslateToAsync(200, 0, 700),
+                head.TranslateToAsync(-200, 0, 700),
+                bodyOne.TranslateToAsync(200, 0, 700),
+                bodyTwo.TranslateToAsync(-200, 0, 700)
+            );
+    }
+
+    private async Task Tantsi4()
+    {
+        await Task.WhenAll(
+                hat.TranslateToAsync(-200, 0, 700),
+                head.TranslateToAsync(200, 0, 700),
+                bodyOne.TranslateToAsync(-200, 0, 700),
+                bodyTwo.TranslateToAsync(200, 0, 700)
+            );
+    }
+
+    private async Task Tantsi3()
+    {
+        await Task.WhenAll(
+                hat.TranslateToAsync(0, 0, 700),
+                head.TranslateToAsync(0, 0, 700),
+                bodyOne.TranslateToAsync(0, 0, 700),
+                bodyTwo.TranslateToAsync(0, 0, 700)
+            );
+    }
+
+    private async Task Tantsi2()
+    {
+        await Task.WhenAll(
+                hat.TranslateToAsync(-200, 0, 700),
+                head.TranslateToAsync(-200, 0, 700),
+                bodyOne.TranslateToAsync(-200, 0, 700),
+                bodyTwo.TranslateToAsync(-200, 0, 700)
+            );
+    }
+
+    private async Task Tantsi1()
+    {
+		await Task.WhenAll(
+				hat.TranslateToAsync(200, 0, 700),
+				head.TranslateToAsync(200, 0, 700),
+                bodyOne.TranslateToAsync(200, 0, 700),
+				bodyTwo.TranslateToAsync(200, 0, 700)
+            );
     }
 }
