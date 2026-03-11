@@ -66,6 +66,9 @@
 	  <MauiXaml Update="DateTimePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PopUpNaidePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="RGBSliderStepper.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
