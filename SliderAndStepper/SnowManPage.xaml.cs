@@ -9,7 +9,7 @@ namespace SliderAndStepper;
 public partial class SnowManPage : ContentPage
 {
 	Random rnd = new Random();
-	uint kiirus;
+	uint kiirus = 1000;
 
     // Snowman
 
@@ -17,8 +17,10 @@ public partial class SnowManPage : ContentPage
     Ellipse head;
     Ellipse bodyOne;
 	Ellipse bodyTwo;
+	Ellipse leftEye;
+	Ellipse rightEye;
 
-	Label opacityLabel;
+    Label opacityLabel;
 	Slider opacitySlider;
 
 	Label speedLabel;
@@ -60,9 +62,24 @@ public partial class SnowManPage : ContentPage
             Stroke = Colors.Black,
             StrokeThickness = 2,
         };
-
-		// Opacity
-		opacityLabel = new Label
+		leftEye = new Ellipse
+		{
+			WidthRequest = 10,
+			HeightRequest = 10,
+			Fill = Colors.Black,
+			Stroke = Colors.Black,
+			StrokeThickness = 1,
+		};
+		rightEye = new Ellipse
+		{
+			WidthRequest = 10,
+			HeightRequest = 10,
+			Fill = Colors.Black,
+			Stroke = Colors.Black,
+			StrokeThickness = 1,
+		};
+        // Opacity
+        opacityLabel = new Label
 		{
 			Text = "Muuda lumememme l‰bipaistvust",
 			HorizontalOptions = LayoutOptions.Center,
@@ -109,7 +126,8 @@ public partial class SnowManPage : ContentPage
 			"Muuda v‰rvi",
 			"Tagastada v‰rvi",
 			"Sulata",
-			"Tantsi"
+			"Tantsi",
+			"R‰‰gi"
 		};
 		picker = new Picker
 		{
@@ -120,10 +138,16 @@ public partial class SnowManPage : ContentPage
 		al = new AbsoluteLayout
 		{
 			HeightRequest = 400,
-			Children = { hat, head, bodyOne, bodyTwo, speedLabel, speedStepper, opacityLabel, opacitySlider, picker }
+			Children = { hat, head, bodyOne, bodyTwo, leftEye, rightEye, speedLabel, speedStepper, opacityLabel, opacitySlider, picker }
 		};
 
 		picker.SelectedIndexChanged += PickerSelectedIndexChanged;
+
+        AbsoluteLayout.SetLayoutFlags(leftEye, AbsoluteLayoutFlags.PositionProportional);
+        AbsoluteLayout.SetLayoutBounds(leftEye, new Rect(0.46, -0.3, 10, 10));
+
+        AbsoluteLayout.SetLayoutFlags(rightEye, AbsoluteLayoutFlags.PositionProportional);
+        AbsoluteLayout.SetLayoutBounds(rightEye, new Rect(0.54, -0.3, 10, 10));
 
         AbsoluteLayout.SetLayoutFlags(bodyTwo, AbsoluteLayoutFlags.PositionProportional);
         AbsoluteLayout.SetLayoutBounds(bodyTwo, new Rect(0.5, 0.1, 125, 125));
@@ -133,6 +157,8 @@ public partial class SnowManPage : ContentPage
 
         AbsoluteLayout.SetLayoutFlags(head, AbsoluteLayoutFlags.PositionProportional);
         AbsoluteLayout.SetLayoutBounds(head, new Rect(0.5, -0.43, 75, 75));
+
+        
 
         AbsoluteLayout.SetLayoutFlags(hat, AbsoluteLayoutFlags.PositionProportional);
         AbsoluteLayout.SetLayoutBounds(hat, new Rect(0.5, -0.5, 50, 40));
@@ -238,6 +264,10 @@ public partial class SnowManPage : ContentPage
             await Tantsi5();
             await Tantsi3();
         }
+		else if (selectedIndex == 6)
+		{
+			await TextToSpeech.SpeakAsync("Jıulud tulevad!");
+        }
     }
 
     async Task SulataLumememm()
@@ -247,16 +277,23 @@ public partial class SnowManPage : ContentPage
                     bodyOne.ScaleToAsync(0, 2000),
                     bodyTwo.ScaleToAsync(0, 3000),
                     hat.ScaleToAsync(0, 1000),
+					leftEye.ScaleToAsync(0, 1000),
+					rightEye.ScaleToAsync(0, 1000),
+
                     head.FadeToAsync(0, kiirus),
                     bodyOne.FadeToAsync(0, kiirus),
                     bodyTwo.FadeToAsync(0, kiirus),
-                    hat.FadeToAsync(0, kiirus)
+                    hat.FadeToAsync(0, kiirus),
+                    leftEye.FadeToAsync(0, kiirus),
+                    rightEye.FadeToAsync(0, kiirus)
                 );
     }
 
     private async Task Tantsi5()
     {
         await Task.WhenAll(
+				rightEye.TranslateToAsync(-200, 0, 700),
+				leftEye.TranslateToAsync(-200, 0, 700),
                 hat.TranslateToAsync(200, 0, 700),
                 head.TranslateToAsync(-200, 0, 700),
                 bodyOne.TranslateToAsync(200, 0, 700),
@@ -267,6 +304,8 @@ public partial class SnowManPage : ContentPage
     private async Task Tantsi4()
     {
         await Task.WhenAll(
+				rightEye.TranslateToAsync(200, 0, 700),
+				leftEye.TranslateToAsync(200, 0, 700),
                 hat.TranslateToAsync(-200, 0, 700),
                 head.TranslateToAsync(200, 0, 700),
                 bodyOne.TranslateToAsync(-200, 0, 700),
@@ -277,6 +316,8 @@ public partial class SnowManPage : ContentPage
     private async Task Tantsi3()
     {
         await Task.WhenAll(
+				rightEye.TranslateToAsync(0, 0, 700),
+				leftEye.TranslateToAsync(0, 0, 700),
                 hat.TranslateToAsync(0, 0, 700),
                 head.TranslateToAsync(0, 0, 700),
                 bodyOne.TranslateToAsync(0, 0, 700),
@@ -287,6 +328,8 @@ public partial class SnowManPage : ContentPage
     private async Task Tantsi2()
     {
         await Task.WhenAll(
+				rightEye.TranslateToAsync(-200, 0, 700),
+				leftEye.TranslateToAsync(-200, 0, 700),
                 hat.TranslateToAsync(-200, 0, 700),
                 head.TranslateToAsync(-200, 0, 700),
                 bodyOne.TranslateToAsync(-200, 0, 700),
@@ -297,7 +340,9 @@ public partial class SnowManPage : ContentPage
     private async Task Tantsi1()
     {
 		await Task.WhenAll(
-				hat.TranslateToAsync(200, 0, 700),
+				rightEye.TranslateToAsync(200, 0, 700),
+				leftEye.TranslateToAsync(200, 0, 700),
+                hat.TranslateToAsync(200, 0, 700),
 				head.TranslateToAsync(200, 0, 700),
                 bodyOne.TranslateToAsync(200, 0, 700),
 				bodyTwo.TranslateToAsync(200, 0, 700)
