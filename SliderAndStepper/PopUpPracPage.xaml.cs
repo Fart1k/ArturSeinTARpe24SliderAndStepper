@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace SliderAndStepper;
 
 public partial class PopUpPracPage : ContentPage
@@ -102,8 +104,27 @@ public partial class PopUpPracPage : ContentPage
         throw new NotImplementedException();
     }
 
-    private void MoistatusBtn_Clicked(object? sender, EventArgs e)
+    private async void MoistatusBtn_Clicked(object? sender, EventArgs e)
     {
+        bool result = await DisplayAlertAsync("Kinnita", "Kas sa oled kindel?", "Jah", "Ei");
+
+        if (result)
+        {
+            await DisplayAlertAsync("Jätkame", "Sinu valik: Jah", "Ok");
+            await MoistatusGame();
+        }
+        else
+        {
+            await DisplayAlertAsync("Ei jätka", "Sinu valik: Ei", "Ok");
+            return;
+        }
+        return;
+    }
+
+    private async Task MoistatusGame()
+    {
+        // await DisplayActionSheetAsync("Mis on kool?", "Koht kus õpivad inimesed", "Vangla");
+
 
     }
 }
