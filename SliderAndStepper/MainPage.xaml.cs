@@ -11,6 +11,7 @@
             new RGBSliderStepper(),
             new SnowManPage(),
             new PopUpNaidePage(),
+            new PopUpPracPage(),
         };
         public List<string> LeheNimed = new List<string>()
     {
@@ -18,7 +19,8 @@
         "StepperSlider",
         "RGB SliderStepper",
         "Lumememm",
-        "PopUp Näide"
+        "PopUp Näide",
+        "PopUp Praktiline",
     };
 
         public MainPage()

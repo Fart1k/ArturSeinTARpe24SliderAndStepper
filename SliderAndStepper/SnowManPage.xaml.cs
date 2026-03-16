@@ -198,6 +198,8 @@ public partial class SnowManPage : ContentPage
 		bodyOne.Opacity = opacityValue;
 		bodyTwo.Opacity = opacityValue;
 		hat.Opacity = opacityValue;
+		rightEye.Opacity = opacityValue;
+		leftEye.Opacity = opacityValue;
 
 		opacityLabel.Text = $"Slider v‰‰rtus on: {e.NewValue:F1}";
     }
@@ -216,6 +218,8 @@ public partial class SnowManPage : ContentPage
             bodyOne.Opacity = 0;
             bodyTwo.Opacity = 0;
             hat.Opacity = 0;
+			leftEye.Opacity = 0;
+			rightEye.Opacity = 0;
         }
 
 		// N‰ita lumememm
@@ -225,11 +229,15 @@ public partial class SnowManPage : ContentPage
             bodyOne.Opacity = 1;
             bodyTwo.Opacity = 1;
             hat.Opacity = 1;
+			leftEye.Opacity = 1;
+			rightEye.Opacity = 1;
 
             head.Scale = 1;
             bodyOne.Scale = 1;
             bodyTwo.Scale = 1;
             hat.Scale = 1;
+			rightEye.Scale = 1;
+			leftEye.Scale = 1;
         }
 
 		// Muuda v‰rvi
