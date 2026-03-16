@@ -19,7 +19,7 @@ public partial class PopUpPracPage : ContentPage
             CornerRadius = 10,
             HeightRequest = 60
         };
-        moistatusBtn.Clicked += StartBtn_Clicked;
+        moistatusBtn.Clicked += MoistatusBtn_Clicked;
 
 
         rebusedBtn = new Button
@@ -102,7 +102,7 @@ public partial class PopUpPracPage : ContentPage
         throw new NotImplementedException();
     }
 
-    private void StartBtn_Clicked(object? sender, EventArgs e)
+    private void MoistatusBtn_Clicked(object? sender, EventArgs e)
     {
 
     }
