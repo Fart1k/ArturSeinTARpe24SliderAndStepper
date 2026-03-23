@@ -122,7 +122,7 @@ public partial class PopUpPracPage : ContentPage
     }
     private async Task MoistatusGame()
     {
-        string vastus1 = await DisplayActionSheetAsync(
+        string v1 = await DisplayActionSheetAsync(
             "Mis on see, mis jookseb, aga jalgu tal pole?",
             "Tühista",
             null,
@@ -130,7 +130,7 @@ public partial class PopUpPracPage : ContentPage
             "Auto",
             "Koer"
             );
-        if (vastus1 == "Jõgi")
+        if (v1 == "Jõgi")
         {
             await DisplayAlertAsync("Õige!", "Sinu vastus on õige!", "OK");
         }
@@ -139,7 +139,7 @@ public partial class PopUpPracPage : ContentPage
             await DisplayAlertAsync("Vale!", "Sinu vastus on vale! Õige vastus on: Jõgi", "OK");
         }
 
-        string vastus2 = await DisplayActionSheetAsync(
+        string v2 = await DisplayActionSheetAsync(
             "Mis on see, millel on hambad, aga ei hammusta?",
             "Tühista",
             null,
@@ -147,7 +147,7 @@ public partial class PopUpPracPage : ContentPage
             "koer",
             "Hai"
             );
-        if (vastus2 == "Kamm")
+        if (v2 == "Kamm")
         {
             await DisplayAlertAsync("Õige!", "Sinu vastus on õige!", "OK");
         }
@@ -156,7 +156,7 @@ public partial class PopUpPracPage : ContentPage
             await DisplayAlertAsync("Vale!", "Sinu vastus on vale! Õige vastus on: Kamm", "OK");
         }
 
-        string vastus3 = await DisplayActionSheetAsync(
+        string v3 = await DisplayActionSheetAsync(
             "Mis on see, mida saab murda, aga mitte kunagi käega katsuda?",
             "Tühista",
             null,
@@ -164,7 +164,7 @@ public partial class PopUpPracPage : ContentPage
             "Klaas",
             "Kivi"
             );
-        if (vastus3 == "Lubadus")
+        if (v3 == "Lubadus")
         {
             await DisplayAlertAsync("Õige!", "Sinu vastus on õige!", "OK");
 
@@ -179,7 +179,7 @@ public partial class PopUpPracPage : ContentPage
 
     private async Task RebusedGame()
     {
-        string vastus1 = await DisplayActionSheetAsync(
+        string v1 = await DisplayActionSheetAsync(
             "🐱 + 🐟 = ?",
             "Tühista",
             null,
@@ -188,7 +188,7 @@ public partial class PopUpPracPage : ContentPage
             "Koer"
         );
 
-        if (vastus1 == "Kass sööb kala")
+        if (v1 == "Kass sööb kala")
         {
             await DisplayAlertAsync("Õige!", "Tubli!", "OK");
         }
@@ -198,7 +198,7 @@ public partial class PopUpPracPage : ContentPage
         }
 
         
-        string vastus2 = await DisplayActionSheetAsync(
+        string v2 = await DisplayActionSheetAsync(
             "🌞 + 🕶️ = ?",
             "Tühista",
             null,
@@ -207,7 +207,7 @@ public partial class PopUpPracPage : ContentPage
             "Suvi"
         );
 
-        if (vastus2 == "Päikeseprillid")
+        if (v2 == "Päikeseprillid")
         {
             await DisplayAlertAsync("Õige!", "Tubli!", "OK");
         }
@@ -217,7 +217,7 @@ public partial class PopUpPracPage : ContentPage
         }
 
         
-        string vastus3 = await DisplayActionSheetAsync(
+        string v3 = await DisplayActionSheetAsync(
             "🐝 + 🍯 = ?",
             "Tühista",
             null,
@@ -226,7 +226,7 @@ public partial class PopUpPracPage : ContentPage
             "Mesilane teeb mett"
         );
 
-        if (vastus3 == "Mesilane teeb mett")
+        if (v3 == "Mesilane teeb mett")
         {
             await DisplayAlertAsync("Õige!", "Tubli!", "OK");
         }
