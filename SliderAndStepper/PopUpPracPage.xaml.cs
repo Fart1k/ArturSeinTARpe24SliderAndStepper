@@ -57,7 +57,7 @@ public partial class PopUpPracPage : ContentPage
         tahestikBtn = new Button
         {
             FontSize = 36,
-            Text = "Mõistatused",
+            Text = "Tähestik",
             FontFamily = "Socafe",
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
@@ -71,7 +71,7 @@ public partial class PopUpPracPage : ContentPage
         korrutustabelBtn = new Button
         {
             FontSize = 36,
-            Text = "Mõistatused",
+            Text = "Korrutustabel",
             FontFamily = "Socafe",
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
@@ -124,7 +124,6 @@ public partial class PopUpPracPage : ContentPage
     }
     private async Task MoistatusGame()
     {
-        // await DisplayActionSheetAsync("Mis on kool?", "Koht kus õpivad inimesed", "Vangla");
         string vastus1 = await DisplayActionSheetAsync(
             "Mis on see, mis jookseb, aga jalgu tal pole?",
             "Tühista",
@@ -241,16 +240,169 @@ public partial class PopUpPracPage : ContentPage
 
     private async Task SonastikGame()
     {
-        throw new NotImplementedException();
+        string v1 = await DisplayActionSheetAsync(
+            "Mida tähendab 'koer'?",
+            "Tühista",
+            null,
+            "Koer",
+            "Kass",
+            "Lind"
+        );
+
+        if (v1 == "Koer")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: Koer", "OK");
+        }
+
+        string v2 = await DisplayActionSheetAsync(
+            "Mida tähendab 'päike'?",
+            "Tühista",
+            null,
+            "Kuu",
+            "Päike",
+            "Täht"
+        );
+
+        if (v2 == "Päike")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: Päike", "OK");
+        }
+
+        string v3 = await DisplayActionSheetAsync(
+            "Mida tähendab 'raamat'?",
+            "Tühista",
+            null,
+            "Vihik",
+            "Raamat",
+            "Pliiats"
+        );
+
+        if (v3 == "Raamat")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: Raamat", "OK");
+        }
     }
 
     private async Task TahestikGame()
     {
-        throw new NotImplementedException();
+        string v1 = await DisplayActionSheetAsync(
+            "Milline täht tuleb pärast A?",
+            "Tühista",
+            null,
+            "B",
+            "C",
+            "D"
+        );
+
+        if (v1 == "B")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: B", "OK");
+        }
+
+        string v2 = await DisplayActionSheetAsync(
+            "Milline täht tuleb pärast M?",
+            "Tühista",
+            null,
+            "N",
+            "O",
+            "L"
+        );
+
+        if (v2 == "N")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: N", "OK");
+        }
+
+        string v3 = await DisplayActionSheetAsync(
+            "Milline täht on viimane tähestikus?",
+            "Tühista",
+            null,
+            "Z",
+            "Y",
+            "X"
+        );
+
+        if (v3 == "Z")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: Z", "OK");
+        }
     }
 
     private async Task KorrutustabelGame()
     {
-        throw new NotImplementedException();
+        string v1 = await DisplayPromptAsync(
+            "Küsimus",
+            "Kui palju on 2 × 3?",
+            "OK",
+            "Tühista",
+            keyboard: Keyboard.Numeric
+        );
+
+        if (v1 == "6")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: 6", "OK");
+        }
+
+        string v2 = await DisplayPromptAsync(
+            "Küsimus",
+            "Kui palju on 4 × 5?",
+            "OK",
+            "Tühista",
+            keyboard: Keyboard.Numeric
+        );
+
+        if (v2 == "20")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: 20", "OK");
+        }
+
+        string v3 = await DisplayPromptAsync(
+            "Küsimus",
+            "Kui palju on 6 × 2?",
+            "OK",
+            "Tühista",
+            keyboard: Keyboard.Numeric
+        );
+
+        if (v3 == "12")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: 12", "OK");
+        }
     }
 }
