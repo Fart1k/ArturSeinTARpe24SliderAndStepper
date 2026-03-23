@@ -1,6 +1,4 @@
 ﻿
-using AndroidX.Core.View.Accessibility;
-
 namespace SliderAndStepper;
 
 public partial class PopUpPracPage : ContentPage
