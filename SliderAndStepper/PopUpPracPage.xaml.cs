@@ -1,4 +1,4 @@
-
+﻿
 using AndroidX.Core.View.Accessibility;
 
 namespace SliderAndStepper;
@@ -15,7 +15,7 @@ public partial class PopUpPracPage : ContentPage
         moistatusBtn = new Button
 		{
 			FontSize = 36,
-			Text = "M�istatused",
+			Text = "Mõistatused",
             FontFamily = "Socafe",
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
@@ -43,7 +43,7 @@ public partial class PopUpPracPage : ContentPage
         sonastikBtn = new Button
         {
             FontSize = 36,
-            Text = "S�nastik",
+            Text = "Sõnastik",
             FontFamily = "Socafe",
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
@@ -57,7 +57,7 @@ public partial class PopUpPracPage : ContentPage
         tahestikBtn = new Button
         {
             FontSize = 36,
-            Text = "M�istatused",
+            Text = "Mõistatused",
             FontFamily = "Socafe",
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
@@ -71,7 +71,7 @@ public partial class PopUpPracPage : ContentPage
         korrutustabelBtn = new Button
         {
             FontSize = 36,
-            Text = "M�istatused",
+            Text = "Mõistatused",
             FontFamily = "Socafe",
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
@@ -96,7 +96,7 @@ public partial class PopUpPracPage : ContentPage
         var button = sender as Button;
         string game = button?.CommandParameter?.ToString();
 
-        bool result = await DisplayAlertAsync("Kinnita", "Kas soovid m�ngida?", "Jah", "Ei");
+        bool result = await DisplayAlertAsync("Kinnita", "Kas soovid mängida?", "Jah", "Ei");
 
         if (!result)
         {
@@ -122,32 +122,29 @@ public partial class PopUpPracPage : ContentPage
                 break;
         }
     }
-
-    
-
     private async Task MoistatusGame()
     {
-        // await DisplayActionSheetAsync("Mis on kool?", "Koht kus �pivad inimesed", "Vangla");
+        // await DisplayActionSheetAsync("Mis on kool?", "Koht kus õpivad inimesed", "Vangla");
         string vastus1 = await DisplayActionSheetAsync(
             "Mis on see, mis jookseb, aga jalgu tal pole?",
-            "T�hista",
+            "Tühista",
             null,
-            "J�gi",
+            "Jõgi",
             "Auto",
             "Koer"
             );
-        if (vastus1 == "J�gi")
+        if (vastus1 == "Jõgi")
         {
-            await DisplayAlertAsync("�ige!", "Sinu vastus on �ige!", "OK");
+            await DisplayAlertAsync("Õige!", "Sinu vastus on õige!", "OK");
         }
         else
         {
-            await DisplayAlertAsync("Vale!", "Sinu vastus on vale! �ige vastus on: J�gi", "OK");
+            await DisplayAlertAsync("Vale!", "Sinu vastus on vale! Õige vastus on: Jõgi", "OK");
         }
 
         string vastus2 = await DisplayActionSheetAsync(
             "Mis on see, millel on hambad, aga ei hammusta?",
-            "T�hista",
+            "Tühista",
             null,
             "Kamm",
             "koer",
@@ -155,16 +152,16 @@ public partial class PopUpPracPage : ContentPage
             );
         if (vastus2 == "Kamm")
         {
-            await DisplayAlertAsync("�ige!", "Sinu vastus on �ige!", "OK");
+            await DisplayAlertAsync("Õige!", "Sinu vastus on õige!", "OK");
         }
         else
         {
-            await DisplayAlertAsync("Vale!", "Sinu vastus on vale! �ige vastus on: Kamm", "OK");
+            await DisplayAlertAsync("Vale!", "Sinu vastus on vale! Õige vastus on: Kamm", "OK");
         }
 
         string vastus3 = await DisplayActionSheetAsync(
-            "Mis on see, mida saab murda, aga mitte kunagi k�ega katsuda?",
-            "T�hista",
+            "Mis on see, mida saab murda, aga mitte kunagi käega katsuda?",
+            "Tühista",
             null,
             "Lubadus",
             "Klaas",
@@ -172,20 +169,74 @@ public partial class PopUpPracPage : ContentPage
             );
         if (vastus3 == "Lubadus")
         {
-            await DisplayAlertAsync("�ige!", "Sinu vastus on �ige!", "OK");
+            await DisplayAlertAsync("Õige!", "Sinu vastus on õige!", "OK");
 
         }
         else
         {
-            await DisplayAlertAsync("Vale!", "Sinu vastus on vale! �ige vastus on: Lubadus", "OK");
+            await DisplayAlertAsync("Vale!", "Sinu vastus on vale! Õige vastus on: Lubadus", "OK");
         }
 
-        await DisplayAlertAsync("M�ng l�bi!", "Ait�h m�ngimast!", "OK");
+        await DisplayAlertAsync("Mäng läbi!", "Aitäh mängimast!", "OK");
     }
 
     private async Task RebusedGame()
     {
+        string vastus1 = await DisplayActionSheetAsync(
+            "🐱 + 🐟 = ?",
+            "Tühista",
+            null,
+            "Kass",
+            "Kass sööb kala",
+            "Koer"
+        );
 
+        if (vastus1 == "Kass sööb kala")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: Kass sööb kala", "OK");
+        }
+
+        
+        string vastus2 = await DisplayActionSheetAsync(
+            "🌞 + 🕶️ = ?",
+            "Tühista",
+            null,
+            "Päike",
+            "Päikeseprillid",
+            "Suvi"
+        );
+
+        if (vastus2 == "Päikeseprillid")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: Päikeseprillid", "OK");
+        }
+
+        
+        string vastus3 = await DisplayActionSheetAsync(
+            "🐝 + 🍯 = ?",
+            "Tühista",
+            null,
+            "Mesi",
+            "Mesilane",
+            "Mesilane teeb mett"
+        );
+
+        if (vastus3 == "Mesilane teeb mett")
+        {
+            await DisplayAlertAsync("Õige!", "Tubli!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Õige vastus: Mesilane teeb mett", "OK");
+        }
     }
 
     private async Task SonastikGame()
