@@ -1,4 +1,5 @@
-using System.Threading.Tasks;
+
+using AndroidX.Core.View.Accessibility;
 
 namespace SliderAndStepper;
 
@@ -19,9 +20,10 @@ public partial class PopUpPracPage : ContentPage
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
             CornerRadius = 10,
-            HeightRequest = 60
+            HeightRequest = 60,
+            CommandParameter = "Moistatused"
         };
-        moistatusBtn.Clicked += MoistatusBtn_Clicked;
+        moistatusBtn.Clicked += OnGameButtonClicked;
 
 
         rebusedBtn = new Button
@@ -32,9 +34,10 @@ public partial class PopUpPracPage : ContentPage
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
             CornerRadius = 10,
-            HeightRequest = 60
+            HeightRequest = 60,
+            CommandParameter = "Rebused"
         };
-        rebusedBtn.Clicked += RebusedBtn_Clicked;
+        rebusedBtn.Clicked += OnGameButtonClicked;
 
 
         sonastikBtn = new Button
@@ -45,9 +48,10 @@ public partial class PopUpPracPage : ContentPage
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
             CornerRadius = 10,
-            HeightRequest = 60
+            HeightRequest = 60,
+            CommandParameter = "Sonastik"
         };
-        sonastikBtn.Clicked += SonastikBtn_Clicked;
+        sonastikBtn.Clicked += OnGameButtonClicked;
 
 
         tahestikBtn = new Button
@@ -58,9 +62,10 @@ public partial class PopUpPracPage : ContentPage
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
             CornerRadius = 10,
-            HeightRequest = 60
+            HeightRequest = 60,
+            CommandParameter = "Tahestik"
         };
-        tahestikBtn.Clicked += TahestikBtn_Clicked;
+        tahestikBtn.Clicked += OnGameButtonClicked;
 
 
         korrutustabelBtn = new Button
@@ -71,9 +76,11 @@ public partial class PopUpPracPage : ContentPage
             BackgroundColor = Colors.DarkMagenta,
             TextColor = Colors.White,
             CornerRadius = 10,
-            HeightRequest = 60
+            HeightRequest = 60,
+            CommandParameter = "Korrutustabel"
         };
-        korrutustabelBtn.Clicked += KorrutustabelBtn_Clicked;
+        korrutustabelBtn.Clicked += OnGameButtonClicked;
+        
 
         Content = new VerticalStackLayout
         {
@@ -84,47 +91,115 @@ public partial class PopUpPracPage : ContentPage
         };
 	}
 
-    private void KorrutustabelBtn_Clicked(object? sender, EventArgs e)
+    private async void OnGameButtonClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
-    }
+        var button = sender as Button;
+        string game = button?.CommandParameter?.ToString();
 
-    private void TahestikBtn_Clicked(object? sender, EventArgs e)
-    {
-        throw new NotImplementedException();
-    }
+        bool result = await DisplayAlertAsync("Kinnita", "Kas soovid mängida?", "Jah", "Ei");
 
-    private void SonastikBtn_Clicked(object? sender, EventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-
-    private void RebusedBtn_Clicked(object? sender, EventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-
-    private async void MoistatusBtn_Clicked(object? sender, EventArgs e)
-    {
-        bool result = await DisplayAlertAsync("Kinnita", "Kas sa oled kindel?", "Jah", "Ei");
-
-        if (result)
+        if (!result)
         {
-            await DisplayAlertAsync("Jätkame", "Sinu valik: Jah", "Ok");
-            await MoistatusGame();
-        }
-        else
-        {
-            await DisplayAlertAsync("Ei jätka", "Sinu valik: Ei", "Ok");
             return;
         }
-        return;
+
+        switch (game)
+        {
+            case "Moistatused":
+                await MoistatusGame();
+                break;
+            case "Rebused":
+                await RebusedGame();
+                break;
+            case "Sonastik":
+                await SonastikGame();
+                break;
+            case "Tahestik":
+                await TahestikGame();
+                break;
+            case "Korrutustabel":
+                await KorrutustabelGame();
+                break;
+        }
     }
+
+    
 
     private async Task MoistatusGame()
     {
         // await DisplayActionSheetAsync("Mis on kool?", "Koht kus õpivad inimesed", "Vangla");
+        string vastus1 = await DisplayActionSheetAsync(
+            "Mis on see, mis jookseb, aga jalgu tal pole?",
+            "Tühista",
+            null,
+            "Jõgi",
+            "Auto",
+            "Koer"
+            );
+        if (vastus1 == "Jõgi")
+        {
+            await DisplayAlertAsync("Õige!", "Sinu vastus on õige!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Sinu vastus on vale! Õige vastus on: Jõgi", "OK");
+        }
 
+        string vastus2 = await DisplayActionSheetAsync(
+            "Mis on see, millel on hambad, aga ei hammusta?",
+            "Tühista",
+            null,
+            "Kamm",
+            "koer",
+            "Hai"
+            );
+        if (vastus2 == "Kamm")
+        {
+            await DisplayAlertAsync("Õige!", "Sinu vastus on õige!", "OK");
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Sinu vastus on vale! Õige vastus on: Kamm", "OK");
+        }
 
+        string vastus3 = await DisplayActionSheetAsync(
+            "Mis on see, mida saab murda, aga mitte kunagi käega katsuda?",
+            "Tühista",
+            null,
+            "Lubadus",
+            "Klaas",
+            "Kivi"
+            );
+        if (vastus3 == "Lubadus")
+        {
+            await DisplayAlertAsync("Õige!", "Sinu vastus on õige!", "OK");
+
+        }
+        else
+        {
+            await DisplayAlertAsync("Vale!", "Sinu vastus on vale! Õige vastus on: Lubadus", "OK");
+        }
+
+        await DisplayAlertAsync("Mäng läbi!", "Aitäh mängimast!", "OK");
+    }
+
+    private async Task RebusedGame()
+    {
+
+    }
+
+    private async Task SonastikGame()
+    {
+        throw new NotImplementedException();
+    }
+
+    private async Task TahestikGame()
+    {
+        throw new NotImplementedException();
+    }
+
+    private async Task KorrutustabelGame()
+    {
+        throw new NotImplementedException();
     }
 }
