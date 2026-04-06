@@ -118,33 +118,6 @@ public partial class PopUpPracPage : ContentPage
                 await KorrutustabelGame();
                 break;
         }
-        /*
-         * if (game == "Moistatused") 
-         * {
-         *  await MoistatusGame();
-         *  break;
-         * }
-         * else if (game == "Rebused")
-         * {
-         * await RebusedGame();
-         * break;
-         * }
-         * else if (game == "Sonastik")
-         * {
-         *  await SonastikGame();
-         *  break;
-         * }
-         * else if (game == "Tahestik")
-         * {
-         * await TahestikGame();
-         * break;
-         * }
-         * else if (game == "Korrutustabel")
-         * {
-         * await KorrutustabelGame();
-         * break;
-         * }
-         */
     }
     private async Task MoistatusGame()
     {
