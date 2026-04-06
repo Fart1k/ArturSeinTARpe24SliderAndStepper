@@ -13,6 +13,7 @@
             new PopUpNaidePage(),
             new PopUpPracPage(),
             new PickerImageGridPage(),
+            new TripsTrapsTrullPage(),
         };
         public List<string> LeheNimed = new List<string>()
     {
@@ -22,7 +23,8 @@
         "Lumememm",
         "PopUp Näide",
         "PopUp Praktiline",
-        "ImageGrid Näide"
+        "ImageGrid Näide",
+        "TripsTrapsTrull"
     };
 
         public MainPage()
