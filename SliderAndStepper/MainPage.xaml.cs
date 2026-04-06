@@ -12,6 +12,7 @@
             new SnowManPage(),
             new PopUpNaidePage(),
             new PopUpPracPage(),
+            new PickerImageGridPage(),
         };
         public List<string> LeheNimed = new List<string>()
     {
@@ -21,6 +22,7 @@
         "Lumememm",
         "PopUp Näide",
         "PopUp Praktiline",
+        "ImageGrid Näide"
     };
 
         public MainPage()
