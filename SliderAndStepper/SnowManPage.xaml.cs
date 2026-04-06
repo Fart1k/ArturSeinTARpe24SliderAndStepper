@@ -178,12 +178,8 @@ public partial class SnowManPage : ContentPage
         AbsoluteLayout.SetLayoutFlags(picker, AbsoluteLayoutFlags.PositionProportional);
         AbsoluteLayout.SetLayoutBounds(picker, new Rect(0.5, 1, 200, 60));
 
-        Content = al;
-
-
-		
+        Content = al;	
     }
-
     public void StepperValueChanged(object? sender, ValueChangedEventArgs e)
     {
 		kiirus = (uint)e.NewValue;
@@ -278,7 +274,7 @@ public partial class SnowManPage : ContentPage
         }
     }
 
-    async Task SulataLumememm()
+    private async Task SulataLumememm()
     {
         await Task.WhenAll(
                     head.ScaleToAsync(0, kiirus),

@@ -92,7 +92,7 @@ public partial class PopUpPracPage : ContentPage
     private async void OnGameButtonClicked(object? sender, EventArgs e)
     {
         var button = sender as Button;
-        string game = button?.CommandParameter?.ToString();
+        string game = button.CommandParameter.ToString();
 
         bool result = await DisplayAlertAsync("Kinnita", "Kas soovid mängida?", "Jah", "Ei");
 
@@ -100,7 +100,6 @@ public partial class PopUpPracPage : ContentPage
         {
             return;
         }
-
         switch (game)
         {
             case "Moistatused":
@@ -119,6 +118,33 @@ public partial class PopUpPracPage : ContentPage
                 await KorrutustabelGame();
                 break;
         }
+        /*
+         * if (game == "Moistatused") 
+         * {
+         *  await MoistatusGame();
+         *  break;
+         * }
+         * else if (game == "Rebused")
+         * {
+         * await RebusedGame();
+         * break;
+         * }
+         * else if (game == "Sonastik")
+         * {
+         *  await SonastikGame();
+         *  break;
+         * }
+         * else if (game == "Tahestik")
+         * {
+         * await TahestikGame();
+         * break;
+         * }
+         * else if (game == "Korrutustabel")
+         * {
+         * await KorrutustabelGame();
+         * break;
+         * }
+         */
     }
     private async Task MoistatusGame()
     {
