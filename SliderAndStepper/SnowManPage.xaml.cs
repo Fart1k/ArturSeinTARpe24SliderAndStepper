@@ -281,13 +281,13 @@ public partial class SnowManPage : ContentPage
     async Task SulataLumememm()
     {
         await Task.WhenAll(
-                    head.ScaleToAsync(0, 1000),
-                    bodyOne.ScaleToAsync(0, 2000),
-                    bodyTwo.ScaleToAsync(0, 3000),
-                    hat.ScaleToAsync(0, 1000),
-					leftEye.ScaleToAsync(0, 1000),
-					rightEye.ScaleToAsync(0, 1000),
-
+                    head.ScaleToAsync(0, kiirus),
+                    bodyOne.ScaleToAsync(0, kiirus),
+                    bodyTwo.ScaleToAsync(0, kiirus),
+                    hat.ScaleToAsync(0, kiirus),
+					leftEye.ScaleToAsync(0, kiirus),
+					rightEye.ScaleToAsync(0, kiirus),
+					
                     head.FadeToAsync(0, kiirus),
                     bodyOne.FadeToAsync(0, kiirus),
                     bodyTwo.FadeToAsync(0, kiirus),
