@@ -154,6 +154,28 @@ public partial class TableViewPage : ContentPage
 
     async void OnEmailClicked(object obj, EventArgs e)
     {
+        if (string.IsNullOrWhiteSpace(contact.Email)) return;
+        var message = contact.Kiri;
+        EmailMessage email = new EmailMessage
+        {
+            Subject = contact.Email,
+            Body = message,
+            BodyFormat = EmailBodyFormat.PlainText,
+            To = new List<string>(new[] {contact.Email})
+        };
+
+        if (Email.Default.IsComposeSupported)
+        {
+            await Email.Default.ComposeAsync(email);
+        }
+
+        else
+        {
+            await DisplayAlertAsync("Viga", "Emaili saatmine pole selles seadmes toetatud", "OK");
+        }
+
+
+        /*
         try
         {
             var emailMessage = new EmailMessage
@@ -173,5 +195,6 @@ public partial class TableViewPage : ContentPage
         {
             await DisplayAlertAsync("Viga", ex.Message, "OK");
         }
+        */
     }
 }
