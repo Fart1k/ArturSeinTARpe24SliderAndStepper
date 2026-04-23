@@ -158,7 +158,7 @@ public partial class TableViewPage : ContentPage
         var message = contact.Kiri;
         EmailMessage email = new EmailMessage
         {
-            Subject = contact.Email,
+            Subject = "Sõnum",
             Body = message,
             BodyFormat = EmailBodyFormat.PlainText,
             To = new List<string>(new[] {contact.Email})
