@@ -14,6 +14,7 @@
             new PopUpPracPage(),
             new PickerImageGridPage(),
             new TripsTrapsTrullPage(),
+            new TableViewPage(),
         };
         public List<string> LeheNimed = new List<string>()
     {
@@ -24,7 +25,8 @@
         "PopUp Näide",
         "PopUp Praktiline",
         "ImageGrid Näide",
-        "TripsTrapsTrull"
+        "TripsTrapsTrull",
+        "TableView"
     };
 
         public MainPage()
