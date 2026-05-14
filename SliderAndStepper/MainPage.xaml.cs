@@ -15,7 +15,8 @@
             new PickerImageGridPage(),
             new TripsTrapsTrullPage(),
             new TableViewPage(),
-            new ListViewPage()
+            new ListViewPage(),
+            new KarusellPage(),
         };
         public List<string> LeheNimed = new List<string>()
     {
@@ -28,7 +29,8 @@
         "ImageGrid Näide",
         "TripsTrapsTrull",
         "TableView",
-        "LisgViewPage",
+        "ListViewPage",
+        "KarusellPage"
     };
 
         public MainPage()
