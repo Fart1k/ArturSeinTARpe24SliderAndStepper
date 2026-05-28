@@ -17,6 +17,7 @@
             new TableViewPage(),
             new ListViewPage(),
             new KarusellPage(),
+            new InteractiveCarouselViewPage(),
         };
         public List<string> LeheNimed = new List<string>()
     {
@@ -30,7 +31,8 @@
         "TripsTrapsTrull",
         "TableView",
         "ListViewPage",
-        "KarusellPage"
+        "KarusellPage",
+        "Interaktiivne galerii"
     };
 
         public MainPage()
